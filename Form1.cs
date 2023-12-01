@@ -210,5 +210,37 @@ namespace TextEditApp
         {
             MessageBox.Show(this,"Editor Text App en .Net con WinForms","Información",MessageBoxButtons.OK,MessageBoxIcon.Information);
         }
+
+        private void txtContent_TextChanged(object sender, EventArgs e)
+        {
+            updateStatusLines();
+            isEditing = true;
+        }
+
+        private void updateStatusLines()
+        {
+            lblStatus.Text = "Editando linea "+(txtContent.GetLineFromCharIndex(txtContent.SelectionStart)+1).ToString();
+        }
+
+        private void txtContent_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.Control && e.KeyCode == Keys.V) {
+                txtContent.Text += (string)Clipboard.GetData("Text");
+                e.Handled = true;
+            }
+        }
+
+        private void formMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (isEditing)
+            {
+                DialogResult dr = MessageBox.Show(this, "Hay cambios en el documento. ¿Desea guardarlos?","Salir", MessageBoxButtons.YesNoCancel,MessageBoxIcon.Question);
+                
+                if(dr != DialogResult.Yes)
+                {
+                    e.Cancel = true;
+                }
+            }
+        }
     }
 }

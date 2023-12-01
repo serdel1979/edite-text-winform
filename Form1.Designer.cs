@@ -166,7 +166,7 @@
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.aboutToolStripMenuItem.Text = "A&bout";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
@@ -197,6 +197,8 @@
             this.txtContent.TabIndex = 2;
             this.txtContent.Text = "";
             this.txtContent.WordWrap = false;
+            this.txtContent.TextChanged += new System.EventHandler(this.txtContent_TextChanged);
+            this.txtContent.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtContent_KeyDown);
             // 
             // dlgOpenFile
             // 
@@ -217,6 +219,7 @@
             this.Controls.Add(this.menuStrip1);
             this.Name = "formMain";
             this.Text = "Text Editor App - New Document";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.formMain_FormClosing);
             this.Load += new System.EventHandler(this.formMain_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
