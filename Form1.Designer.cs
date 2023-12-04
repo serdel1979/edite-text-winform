@@ -48,6 +48,9 @@
             this.txtContent = new System.Windows.Forms.RichTextBox();
             this.dlgOpenFile = new System.Windows.Forms.OpenFileDialog();
             this.dlgSaveFile = new System.Windows.Forms.SaveFileDialog();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.bgWorkerOpenFile = new System.ComponentModel.BackgroundWorker();
+            this.bgWorkerSaveFile = new System.ComponentModel.BackgroundWorker();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -173,7 +176,8 @@
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.lblStatus});
+            this.lblStatus,
+            this.toolStripStatusLabel1});
             this.statusStrip1.Location = new System.Drawing.Point(0, 428);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(800, 22);
@@ -208,6 +212,17 @@
             // dlgSaveFile
             // 
             this.dlgSaveFile.Filter = "Archivos de Texto | *.txt";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(118, 17);
+            this.toolStripStatusLabel1.Text = "toolStripStatusLabel1";
+            // 
+            // bgWorkerOpenFile
+            // 
+            this.bgWorkerOpenFile.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgWorkerOpenFile_DoWork);
+            this.bgWorkerOpenFile.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorkerOpenFile_RunWorkerCompleted);
             // 
             // formMain
             // 
@@ -252,6 +267,9 @@
         private System.Windows.Forms.RichTextBox txtContent;
         private System.Windows.Forms.OpenFileDialog dlgOpenFile;
         private System.Windows.Forms.SaveFileDialog dlgSaveFile;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.ComponentModel.BackgroundWorker bgWorkerOpenFile;
+        private System.ComponentModel.BackgroundWorker bgWorkerSaveFile;
     }
 }
 

@@ -242,5 +242,26 @@ namespace TextEditApp
                 }
             }
         }
+
+        private void bgWorkerOpenFile_DoWork(object sender, DoWorkEventArgs e)
+        {
+            try
+            {
+
+                retrievedText = File.ReadAllText(@fileToSave);
+
+            }catch(Exception ex)
+            {
+                MessageBox.Show(this,ex.Message,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+        }
+
+        private void bgWorkerOpenFile_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            txtContent.Text = retrievedText;
+            lblStatus.Text = "Archivo abierto: " + @fileToOpen;
+            isEditing = true;
+            this.Text = "Text Editor App - Nuevo Documento";
+        }
     }
 }
